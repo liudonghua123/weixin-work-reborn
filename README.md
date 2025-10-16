@@ -18,13 +18,13 @@ A Python SDK for interacting with the WeChat Work API. This library provides a s
 Install the package using pip:
 
 ```bash
-pip install weixin-work
+pip install weixin-work-reborn
 ```
 
 ## Quick Start
 
 ```python
-from weixin_work import WeChatWorkClient, Config
+from weixin_work_reborn import WeChatWorkClient, Config
 
 # Initialize the client with configuration
 config = Config()  # Loads from .env file or environment variables
@@ -64,7 +64,7 @@ WEIXIN_WORK_AGENT_ID=your_agent_id_here
 Then in your code:
 
 ```python
-from weixin_work import WeChatWorkClient, Config
+from weixin_work_reborn import WeChatWorkClient, Config
 
 config = Config()  # Automatically loads from .env file
 client = WeChatWorkClient(config=config)

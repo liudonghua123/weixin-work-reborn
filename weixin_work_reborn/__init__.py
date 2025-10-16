@@ -1,5 +1,5 @@
 """
-WeChat Work API SDK
+WeChat Work API SDK Reborn
 A Python client for interacting with the WeChat Work API.
 """
 

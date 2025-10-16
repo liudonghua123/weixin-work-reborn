@@ -2,7 +2,7 @@
 Example usage of the WeChat Work API client.
 """
 
-from weixin_work import WeChatWorkClient, Config
+from weixin_work_reborn import WeChatWorkClient, Config
 
 # Initialize the client with configuration
 # You can either pass config directly or let it load from .env file
