@@ -28,11 +28,14 @@ class Config:
         # Load configuration from environment variables with defaults
         self.base_url = os.getenv("WEIXIN_WORK_BASE_URL", "https://qyapi.weixin.qq.com/")
         self.corp_id = os.getenv("WEIXIN_WORK_CORP_ID", "")
-        self.corp_secret = os.getenv("WEIXIN_WORK_CORP_SECRET", "")
+        self.app_secret = os.getenv("WEIXIN_WORK_APP_SECRET", "")
+        self.contacts_sync_secret = os.getenv("WEIXIN_WORK_CONTACTS_SYNC_SECRET", "")
         self.agent_id = os.getenv("WEIXIN_WORK_AGENT_ID", "")
         
         # Validate required configuration
         if not self.corp_id:
             raise ValueError("WEIXIN_WORK_CORP_ID is required")
-        if not self.corp_secret:
-            raise ValueError("WEIXIN_WORK_CORP_SECRET is required")
+        if not self.app_secret:
+            raise ValueError("WEIXIN_WORK_APP_SECRET is required")
+        if not self.contacts_sync_secret:
+            raise ValueError("WEIXIN_WORK_CONTACTS_SYNC_SECRET is required")

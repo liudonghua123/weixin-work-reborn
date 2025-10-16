@@ -22,12 +22,13 @@ class TestWeChatWorkClient(unittest.TestCase):
         self.config = MagicMock(spec=Config)
         self.config.base_url = self.base_url
         self.config.corp_id = self.corp_id
-        self.config.corp_secret = self.secret
+        self.config.app_secret = self.secret
+        self.config.contacts_sync_secret = self.secret  # Using same secret for testing
         self.config.agent_id = "test_agent_id"
         
         self.client = WeChatWorkClient(config=self.config)
     
-    @patch('weixin_work_reborn.common.AccessTokenManager.get_access_token')
+    @patch('weixin_work_reborn.common.AccessTokenManager.get_app_access_token')
     def test_get_user_success(self, mock_get_token):
         """Test successful user retrieval."""
         # Mock the access token
@@ -51,7 +52,7 @@ class TestWeChatWorkClient(unittest.TestCase):
             self.assertEqual(result['name'], 'Test User')
             mock_get.assert_called_once()
     
-    @patch('weixin_work_reborn.common.AccessTokenManager.get_access_token')
+    @patch('weixin_work_reborn.common.AccessTokenManager.get_contacts_sync_access_token')
     def test_update_user_success(self, mock_get_token):
         """Test successful user update."""
         # Mock the access token
@@ -72,7 +73,7 @@ class TestWeChatWorkClient(unittest.TestCase):
             self.assertEqual(result['errcode'], 0)
             mock_post.assert_called_once()
     
-    @patch('weixin_work_reborn.common.AccessTokenManager.get_access_token')
+    @patch('weixin_work_reborn.common.AccessTokenManager.get_app_access_token')
     def test_mobile_to_userid_success(self, mock_get_token):
         """Test successful mobile to userid conversion."""
         # Mock the access token

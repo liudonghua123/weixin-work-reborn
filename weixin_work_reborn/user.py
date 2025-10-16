@@ -41,7 +41,7 @@ class UserManager:
         """
         endpoint = "/user/get"
         params = {
-            'access_token': self.access_token_manager.get_access_token(),
+            'access_token': self.access_token_manager.get_app_access_token(),
             'userid': user_id
         }
         
@@ -161,7 +161,7 @@ class UserManager:
             user_data['main_department'] = main_department
         
         try:
-            params = {'access_token': self.access_token_manager.get_access_token()}
+            params = {'access_token': self.access_token_manager.get_contacts_sync_access_token()}
             headers = {'Content-Type': 'application/json'}
             
             response = requests.post(f"{self.api_base}{endpoint}", params=params, json=user_data, headers=headers, timeout=30)
@@ -192,7 +192,7 @@ class UserManager:
         data = {'mobile': mobile}
         
         try:
-            params = {'access_token': self.access_token_manager.get_access_token()}
+            params = {'access_token': self.access_token_manager.get_app_access_token()}
             headers = {'Content-Type': 'application/json'}
             
             response = requests.post(f"{self.api_base}{endpoint}", params=params, json=data, headers=headers, timeout=30)

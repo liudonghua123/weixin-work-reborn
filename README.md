@@ -57,9 +57,14 @@ Create a `.env` file in your project root:
 ```bash
 WEIXIN_WORK_BASE_URL=https://qyapi.weixin.qq.com/
 WEIXIN_WORK_CORP_ID=your_corp_id_here
-WEIXIN_WORK_CORP_SECRET=your_corp_secret_here
+WEIXIN_WORK_APP_SECRET=your_app_secret_here
+WEIXIN_WORK_CONTACTS_SYNC_SECRET=your_contacts_sync_secret_here
 WEIXIN_WORK_AGENT_ID=your_agent_id_here
 ```
+
+**Note:** WeChat Work API requires different secrets for different API endpoints:
+- `WEIXIN_WORK_APP_SECRET` is used for general API operations (e.g., getting user information, mobile to userid conversion)
+- `WEIXIN_WORK_CONTACTS_SYNC_SECRET` is specifically required for user management operations (e.g., update_user)
 
 Then in your code:
 
@@ -77,9 +82,14 @@ Alternatively, you can set environment variables:
 ```bash
 export WEIXIN_WORK_BASE_URL="https://qyapi.weixin.qq.com/"
 export WEIXIN_WORK_CORP_ID="your_corp_id_here"
-export WEIXIN_WORK_CORP_SECRET="your_corp_secret_here"
+export WEIXIN_WORK_APP_SECRET="your_app_secret_here"
+export WEIXIN_WORK_CONTACTS_SYNC_SECRET="your_contacts_sync_secret_here"
 export WEIXIN_WORK_AGENT_ID="your_agent_id_here"
 ```
+
+**Note:** WeChat Work API requires different secrets for different API endpoints:
+- `WEIXIN_WORK_APP_SECRET` is used for general API operations (e.g., getting user information, mobile to userid conversion)
+- `WEIXIN_WORK_CONTACTS_SYNC_SECRET` is specifically required for user management operations (e.g., update_user)
 
 ## API Reference
 

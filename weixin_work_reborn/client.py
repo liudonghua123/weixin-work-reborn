@@ -46,7 +46,8 @@ class WeChatWorkClient:
         self.token_manager = AccessTokenManager(
             base_url=self.config.base_url,
             corp_id=self.config.corp_id,
-            corp_secret=self.config.corp_secret,
+            app_secret=self.config.app_secret,
+            contacts_sync_secret=self.config.contacts_sync_secret,
             token_cache_size=token_cache_size,
             token_cache_ttl=token_cache_ttl
         )
