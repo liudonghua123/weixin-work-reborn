@@ -15,7 +15,7 @@ class AccessTokenManager:
     Manages access token retrieval and caching for WeChat Work API.
     """
     
-    def __init__(self, base_url: str, corp_id: str, app_secret: str, contacts_sync_secret: str,
+    def __init__(self, base_url: str, corp_id: str, app_secret: str, contacts_sync_secret: str, doc_secret: str,
                  token_cache_size: int = 100, token_cache_ttl: int = 7000):
         """
         Initialize the access token manager.
@@ -25,12 +25,14 @@ class AccessTokenManager:
             corp_id: Corporate ID
             app_secret: App secret for general API access
             contacts_sync_secret: Secret for contacts sync API access
+            doc_secret: Secret for doc API access
             token_cache_size: Size of the token cache
             token_cache_ttl: Time-to-live for cached tokens in seconds
         """
         self.base_url = base_url.rstrip('/')
         self.corp_id = corp_id
         self.app_secret = app_secret
+        self.doc_secret = doc_secret
         self.contacts_sync_secret = contacts_sync_secret
         self.token_url = f"{self.base_url}/cgi-bin/gettoken"
         
@@ -56,6 +58,15 @@ class AccessTokenManager:
             The access token as a string
         """
         return self._get_access_token(self.contacts_sync_secret, "contacts_sync")
+    
+    def get_doc_access_token(self) -> str:
+        """
+        Get the doc access token, either from cache or by requesting a new one.
+        
+        Returns:
+            The access token as a string
+        """
+        return self._get_access_token(self.doc_secret, "doc")
     
     def _get_access_token(self, secret: str, token_type: str) -> str:
         """

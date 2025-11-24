@@ -30,6 +30,7 @@ class Config:
         self.corp_id = os.getenv("WEIXIN_WORK_CORP_ID", "")
         self.app_secret = os.getenv("WEIXIN_WORK_APP_SECRET", "")
         self.contacts_sync_secret = os.getenv("WEIXIN_WORK_CONTACTS_SYNC_SECRET", "")
+        self.doc_secret = os.getenv("WEIXIN_WORK_DOC_SECRET", "")
         self.agent_id = os.getenv("WEIXIN_WORK_AGENT_ID", "")
         
         # Validate required configuration
@@ -39,3 +40,5 @@ class Config:
             raise ValueError("WEIXIN_WORK_APP_SECRET is required")
         if not self.contacts_sync_secret:
             raise ValueError("WEIXIN_WORK_CONTACTS_SYNC_SECRET is required")
+        if not self.doc_secret:
+            raise ValueError("WEIXIN_WORK_DOC_SECRET is required")
